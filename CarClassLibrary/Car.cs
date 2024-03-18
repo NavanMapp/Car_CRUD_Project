@@ -15,9 +15,9 @@ namespace CarClassLibrary
 
         public Car()
         {
-            this.Make = Make;
-            this.Model = Model;
-            this.Price = Price;
+            this.Make = "Volkswagen";
+            this.Model = "Polo";
+            this.Price = 10000M;
         }
 
         public Car(string a, string b, decimal c)
