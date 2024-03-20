@@ -12,7 +12,7 @@ Car d = new Car("Ford", "Mustang", 50000);
 Console.WriteLine("Car d is a {0} {1} that costs ${2} ", d.Make, d.Model, d.Price);
 
 
-
+Store s = new Store();
 decimal total = s.Checkout();
 
 int action = chooseAction();
@@ -25,7 +25,7 @@ while(action != 0)
 static int chooseAction()
 {
     Car car = new Car();
-    Store s = new Store();
+
 
     int choice = 0;
 
@@ -45,11 +45,11 @@ static int chooseAction()
                 carModel = Console.ReadLine();
                 Console.WriteLine("Add the Price of the car");
                 decimal carPrice = car.Price;
-                carPrice = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Car {0} {1} is a added into inventory and cost price is ${2} ", car.Make, car.Model, car.Price);
+                carPrice = Convert.ToDecimal(Console.ReadLine());
+                Console.WriteLine("Car {0} {1} is a added into inventory and cost price is ${2} ", carMake, carModel, carPrice);
                 break;
             case 2:
-                s.CarList.Add(car);
+                //s.CarList.Add(car);
                 Console.WriteLine("");
                 break;
             case 3:
