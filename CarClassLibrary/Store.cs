@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CarClassLibrary
 {
-    internal class Store
+    public class Store
     {
         public List<Car> CarList{ get; set; }
         public List<Car> ShoppingList { get; set; }
