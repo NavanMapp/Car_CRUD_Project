@@ -11,9 +11,7 @@ Console.WriteLine();
 Car d = new Car("Ford", "Mustang", 50000);
 Console.WriteLine("Car d is a {0} {1} that costs ${2} ", d.Make, d.Model, d.Price);
 
-Store s = new Store();
-s.CarList.Add(c);
-s.CarList.Add(d);
+
 
 decimal total = s.Checkout();
 
@@ -27,21 +25,38 @@ while(action != 0)
 static int chooseAction()
 {
     Car car = new Car();
-    int choice = 0;
-    Console.WriteLine("Choose an action:\n (0) QUIT \n(1) ADD A NEW CAR into inventory \n" +
-        "(2) ADD CAR TO CART \n(3) CHECKOUT");
-    choice = int.Parse(Console.ReadLine());
+    Store s = new Store();
 
-    switch (choice)
+    int choice = 0;
+
+    Console.WriteLine("Choose a Number to action request:\n (0) QUIT \n(1) ADD A NEW CAR into inventory \n" +
+        "(2) ADD CAR TO CART \n(3) CHECKOUT");
+    String input = Console.ReadLine();
+    
+    if (int.TryParse(input, out choice))
     {
-        case 1 : Console.WriteLine("You chose to add a new car into the Inventory.\nAdd Car Make: ");
-            break;
-        case 2:
-            Console.WriteLine("Car {0} {1} is a added into inventory and cost price is ${2} ", car.Make, car.Model, car.Price);
-            break;
-        case 3:
-            Console.WriteLine($"Store value of the car is {total}");
-            break;
+        switch (choice)
+        {
+            case 1 : Console.WriteLine("You chose to add a new car into the Inventory.\nAdd Car Make: ");
+                string carMake = car.Make;
+                carMake = Console.ReadLine();
+                Console.WriteLine("Add the Car Model:  ");
+                string carModel = car.Model;
+                carModel = Console.ReadLine();
+                Console.WriteLine("Add the Price of the car");
+                decimal carPrice = car.Price;
+                carPrice = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Car {0} {1} is a added into inventory and cost price is ${2} ", car.Make, car.Model, car.Price);
+                break;
+            case 2:
+                s.CarList.Add(car);
+                Console.WriteLine("");
+                break;
+            case 3:
+                //Console.WriteLine($"Store value of the car is {total}");
+                break;
+        }
+    
     }
     
 
