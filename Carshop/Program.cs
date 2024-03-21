@@ -4,16 +4,7 @@ Console.WriteLine("Welcome to the car store. First you must create some car inve
     "Then you may add some cars to the store cart. Finally you may checkout which will give" +
     "you the total value of the cars you selected.");
 
-
-Car c = new Car();
-Console.WriteLine();
-
-Car d = new Car("Ford", "Mustang", 50000);
-Console.WriteLine("Car d is a {0} {1} that costs ${2} ", d.Make, d.Model, d.Price);
-
-
 Store s = new Store();
-decimal total = s.Checkout();
 
 int action = chooseAction();
 
@@ -25,7 +16,8 @@ while(action != 0)
 static int chooseAction()
 {
     Car car = new Car();
-
+    Store s = new Store();
+    decimal total = s.Checkout();
 
     int choice = 0;
 
@@ -49,11 +41,15 @@ static int chooseAction()
                 Console.WriteLine("Car {0} {1} is a added into inventory and cost price is ${2} ", carMake, carModel, carPrice);
                 break;
             case 2:
-                //s.CarList.Add(car);
-                Console.WriteLine("");
+                if (string.IsNullOrEmpty(car.Make) && string.IsNullOrEmpty(car.Model))
+                {
+                    Console.WriteLine("Car does not exist, Press option 1 to add Vehicle into inventory");
+                }
+                s.CarList.Add(car);
+                Console.WriteLine("Car has been added onto the cart");
                 break;
             case 3:
-                //Console.WriteLine($"Store value of the car is {total}");
+                Console.WriteLine($"Store value of the car is {total}");
                 break;
         }
     
