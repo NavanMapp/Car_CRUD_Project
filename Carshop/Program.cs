@@ -29,33 +29,38 @@ static int chooseAction()
     {
         switch (choice)
         {
-            case 1 : Console.WriteLine("You chose to add a new car into the Inventory.\nAdd Car Make: ");
-                string carMake = car.Make;
-                carMake = Console.ReadLine();
-                Console.WriteLine("Add the Car Model:  ");
-                string carModel = car.Model;
-                carModel = Console.ReadLine();
-                Console.WriteLine("Add the Price of the car");
-                decimal carPrice = car.Price;
-                carPrice = Convert.ToDecimal(Console.ReadLine());
-                Console.WriteLine("Car {0} {1} is a added into inventory and cost price is ${2} ", carMake, carModel, carPrice);
+            case 1 :
+                try
+                {
+                    Console.WriteLine("You chose to add a new car into the Inventory.\nAdd Car Make: ");
+                    car.Make = Console.ReadLine();
+
+                    Console.WriteLine("Add the Car Model:  ");
+                    car.Model = Console.ReadLine();
+
+                    Console.WriteLine("Add the Price of the car");
+                    car.Price = Convert.ToInt32(Console.ReadLine());
+
+                    s.CarList.Add(car);
+                    Console.WriteLine(car.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+
                 break;
             case 2:
-                if (string.IsNullOrEmpty(car.Make) && string.IsNullOrEmpty(car.Model))
+                foreach (Car c in s)
                 {
-                    Console.WriteLine("Car does not exist, Press option 1 to add Vehicle into inventory");
+                    Console.WriteLine(c);
                 }
-                s.CarList.Add(car);
-                Console.WriteLine("Car has been added onto the cart");
                 break;
             case 3:
                 Console.WriteLine($"Store value of the car is {total}");
                 break;
         }
-    
     }
-    
-
     return choice;
 }
 

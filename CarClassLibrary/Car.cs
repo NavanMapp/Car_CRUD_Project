@@ -8,8 +8,31 @@ namespace CarClassLibrary
 {
     public class Car
     {
-        public string Make { get; set; }
-        public string Model { get; set; }
+        public string Make { get { return Make; }
+            set 
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    Make = value;
+                } else
+                {
+                    throw new ArgumentException("Make cannot be empty!");
+                }
+            }
+            
+        }
+        public string Model { get { return Model; }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    Model = value;
+                } else
+                {
+                    throw new ArgumentException("Model cannot be empty!");
+                }
+            }
+        }
 
         public decimal Price{ get; set; }
 
@@ -25,6 +48,11 @@ namespace CarClassLibrary
             Make = a;
             Model = b;
             Price = c;
+        }
+
+        override public String ToString()
+        {
+            return $"Your Car {Make} {Model} is added into the inventory and cost price is {Price} ";
         }
     }
 }
