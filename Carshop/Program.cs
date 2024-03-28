@@ -51,6 +51,7 @@ static int chooseAction()
 
                 break;
             case 2:
+
                 foreach (Car c in s)
                 {
                     Console.WriteLine(c);
