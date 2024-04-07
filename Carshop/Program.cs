@@ -51,11 +51,19 @@ static int chooseAction()
 
                 break;
             case 2:
-
-                foreach (Car c in s)
+                try
                 {
-                    Console.WriteLine(c);
+                    foreach (Car c in s.CarList)
+                    {
+                        Console.WriteLine($"Cars stored in the store are: {c}");
+                    }
+
                 }
+                catch (Exception)
+                {
+                    Console.WriteLine("Car cannot be stored in the store");
+                }
+                
                 break;
             case 3:
                 Console.WriteLine($"Store value of the car is {total}");
